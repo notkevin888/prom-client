@@ -122,12 +122,12 @@ gauge.labels('GET', '200').set(100); // 2nd version, Same as above
 
 It is also possible to use timers with labels, both before and after the timer is created:
 ```js
-var end = startTimer({ method: 'GET' });
+var end = startTimer({ method: 'GET' }); // Set method to GET, we don't know statusCode yet
 xhrRequest(function(err, res) {
 	if (err) {
-		end({ statusCode: '500' });
+		end({ statusCode: '500' }); // Sets value to xhrRequest duration in seconds with statusCode 500
 	} else {
-		end({ statusCode: '200' });
+		end({ statusCode: '200' }); // Sets value to xhrRequest duration in seconds with statusCode 200
 	}
 });
 ```
